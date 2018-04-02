@@ -44,6 +44,8 @@ gem 'chartkick'
 gem 'jquery-rails'
 gem 'bootstrap'
 gem 'figaro'
+gem 'httparty'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
