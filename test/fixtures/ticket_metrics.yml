@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  zendesk_id: 1
+  ticket_id: 1
+  assignee_updated_at: 2018-04-04
+  initially_assigned_at: 2018-04-04
+  solved_at: 2018-04-04
+  first_resolution_time_in_minutes: MyString
+  reply_time_in_minutes: MyString
+  full_resolution_time_in_minutes: MyString
+  created_at: 2018-04-04
+  updated_at: 2018-04-04
+
+two:
+  zendesk_id: 1
+  ticket_id: 1
+  assignee_updated_at: 2018-04-04
+  initially_assigned_at: 2018-04-04
+  solved_at: 2018-04-04
+  first_resolution_time_in_minutes: MyString
+  reply_time_in_minutes: MyString
+  full_resolution_time_in_minutes: MyString
+  created_at: 2018-04-04
+  updated_at: 2018-04-04

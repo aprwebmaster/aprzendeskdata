@@ -1,0 +1,77 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: MyString
+  url: MyString
+  name: MyString
+  email: MyString
+  created_at: MyString
+  updated_at: MyString
+  time_zone: MyString
+  phone: MyString
+  shared_phone_number: MyString
+  photo: MyString
+  locale_id: MyString
+  locale: MyString
+  organization_id: MyString
+  role: MyString
+  verified: false
+  external_id: MyString
+  tags: MyString
+  alias: MyString
+  active: false
+  shared: 
+  shared_agent: false
+  last_login_at: MyString
+  two_factor_auth_enabled: false
+  signature: MyString
+  details: MyString
+  notes: MyString
+  role_type: MyString
+  custom_role_id: MyString
+  moderator: false
+  ticket_restriction: MyString
+  only_private_comments: false
+  restricted_agent: false
+  suspended: false
+  chat_only: false
+  default_group_id: MyString
+  user_fields: MyString
+
+two:
+  id: MyString
+  url: MyString
+  name: MyString
+  email: MyString
+  created_at: MyString
+  updated_at: MyString
+  time_zone: MyString
+  phone: MyString
+  shared_phone_number: MyString
+  photo: MyString
+  locale_id: MyString
+  locale: MyString
+  organization_id: MyString
+  role: MyString
+  verified: false
+  external_id: MyString
+  tags: MyString
+  alias: MyString
+  active: false
+  shared: 
+  shared_agent: false
+  last_login_at: MyString
+  two_factor_auth_enabled: false
+  signature: MyString
+  details: MyString
+  notes: MyString
+  role_type: MyString
+  custom_role_id: MyString
+  moderator: false
+  ticket_restriction: MyString
+  only_private_comments: false
+  restricted_agent: false
+  suspended: false
+  chat_only: false
+  default_group_id: MyString
+  user_fields: MyString

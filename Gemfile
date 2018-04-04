@@ -45,6 +45,8 @@ gem 'jquery-rails'
 gem 'bootstrap'
 gem 'figaro'
 gem 'httparty'
+gem 'faker'
+gem 'zendesk_api'
 
 
 # Use Capistrano for deployment
