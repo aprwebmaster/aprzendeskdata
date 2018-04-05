@@ -48,7 +48,7 @@ file = File.read('aprzendeskusers1.json')
 users = JSON.load(file)['users']
 
 users.each do |a|
-	User.find_or_create_by(:zendesk_id => a['id'], :url => a['url'], :name => a['name'], :email => a['email'],
+	User.find_or_create_by(:zendesk_id_int => a['id'], :url => a['url'], :name => a['name'], :email => a['email'],
 		:phone => a['phone'], :role => a['role']
 		)
 end
