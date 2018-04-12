@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180412180425) do
+ActiveRecord::Schema.define(version: 20180412183931) do
 
   create_table "ticket_metrics", force: :cascade do |t|
     t.integer "zendesk_id", limit: 8
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20180412180425) do
     t.datetime "updated_at", null: false
     t.string "external_id_string"
     t.integer "zen_id", limit: 8
+    t.integer "tick_id", limit: 8
   end
 
   create_table "tickets", force: :cascade do |t|
