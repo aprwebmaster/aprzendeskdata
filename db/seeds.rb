@@ -77,7 +77,7 @@ while nextURL["next_page"]
   users = JSON.load(file)['users']
 
   users.each do |a|
-	  User.find_or_create_by(:zendesk_id_int => a["id"], :url => a["url"], :name => a["name"], :email => a["email"],
+	  User.find_or_create_by(:zen_id => a["id"], :url => a["url"], :name => a["name"], :email => a["email"],
 		  :phone => a["phone"], :role => a["role"], :default_group_id => a["default_group_id"], :external_id => a["external_id"],
 		  :tags => a["tags"]
 		  	)
@@ -211,9 +211,9 @@ file2 = File.read('aprzendesktickets.json')
 tickets = JSON.load(file2)['tickets']
 
 tickets.each do |a|
-	Ticket.find_or_create_by(:zendesk_id => a['id'], :subject => a['subject'], :description => a['description'], :status => a['status'],
-		:recipient => a['recipient'], :submitter_id => a['submitter_id'], :requester_id => a['requester_id'], 
-		:assignee_id => a['assignee_id'], :group_id => a['group_id'], :created_at => a['created_at'], :external_id_string => a['external_id'],
+	Ticket.find_or_create_by(:zen_id => a['id'], :subject => a['subject'], :description => a['description'], :status => a['status'],
+		:recipient => a['recipient'], :sub_id => a['submitter_id'], :req_id => a['requester_id'], 
+		:a_id => a['assignee_id'], :g_id => a['group_id'], :created_at => a['created_at'], :external_id_string => a['external_id'],
 		:updated_at => a['updated_at']
 		)
 end
@@ -253,7 +253,7 @@ file3 = File.read('aprzendeskticketmetrics.json')
 ticket_metrics = JSON.load(file3)['ticket_metrics']
 
 ticket_metrics.each do |a|
-	TicketMetric.find_or_create_by(:zendesk_id => a['id'], :ticket_id => a['ticket_id'], :assignee_updated_at => a['assignee_updated_at'], :initially_assigned_at => a['initially_assigned_at'],
+	TicketMetric.find_or_create_by(:zen_id => a['id'], :tick_id => a['ticket_id'], :assignee_updated_at => a['assignee_updated_at'], :initially_assigned_at => a['initially_assigned_at'],
 		:solved_at => a['solved_at'], :first_resolution_time_in_minutes => a['first_resolution_time'], :full_resolution_time_in_minutes => a['full_resolution_time'], :external_id_string => a['external_id'],
 		:created_at => a['created_at'],
 		:updated_at => a['updated_at']

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180406171755) do
+ActiveRecord::Schema.define(version: 20180412180425) do
 
   create_table "ticket_metrics", force: :cascade do |t|
     t.integer "zendesk_id", limit: 8
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20180406171755) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "external_id_string"
+    t.integer "zen_id", limit: 8
   end
 
   create_table "tickets", force: :cascade do |t|
@@ -42,6 +43,12 @@ ActiveRecord::Schema.define(version: 20180406171755) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "external_id_string"
+    t.integer "zen_id", limit: 8
+    t.integer "tick_id", limit: 8
+    t.integer "req_id", limit: 8
+    t.integer "sub_id", limit: 8
+    t.integer "a_id", limit: 8
+    t.integer "g_id", limit: 8
   end
 
   create_table "users", force: :cascade do |t|
@@ -82,6 +89,7 @@ ActiveRecord::Schema.define(version: 20180406171755) do
     t.string "default_group_id"
     t.string "user_fields"
     t.integer "zendesk_id_int", limit: 8
+    t.integer "zen_id", limit: 8
   end
 
 end
