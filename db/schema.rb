@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180404233730) do
+ActiveRecord::Schema.define(version: 20180406171755) do
 
   create_table "ticket_metrics", force: :cascade do |t|
-    t.integer "zendesk_id"
-    t.integer "ticket_id"
+    t.integer "zendesk_id", limit: 8
+    t.integer "ticket_id", limit: 8
     t.date "assignee_updated_at"
     t.date "initially_assigned_at"
     t.date "solved_at"
@@ -23,27 +23,29 @@ ActiveRecord::Schema.define(version: 20180404233730) do
     t.string "full_resolution_time_in_minutes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "external_id_string"
   end
 
   create_table "tickets", force: :cascade do |t|
-    t.integer "zendesk_id"
+    t.integer "zendesk_id", limit: 8
     t.integer "external_id"
     t.string "subject"
     t.string "description"
     t.string "status"
     t.string "recipient"
-    t.integer "requester_id"
-    t.integer "submitter_id"
-    t.integer "assignee_id"
-    t.integer "group_id"
+    t.integer "requester_id", limit: 8
+    t.integer "submitter_id", limit: 8
+    t.integer "assignee_id", limit: 8
+    t.integer "group_id", limit: 8
     t.text "tags"
     t.string "satisfaction_rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "external_id_string"
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer "zendesk_id"
+    t.integer "zendesk_id", limit: 8
     t.string "url"
     t.string "name"
     t.string "email"
@@ -79,7 +81,7 @@ ActiveRecord::Schema.define(version: 20180404233730) do
     t.boolean "chat_only"
     t.string "default_group_id"
     t.string "user_fields"
-    t.integer "zendesk_id_int"
+    t.integer "zendesk_id_int", limit: 8
   end
 
 end
