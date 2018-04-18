@@ -1,5 +1,9 @@
 class User < ApplicationRecord
 
+	
+	
+
+=begin 
 def self.save_data_from_api
 	uri = URI.parse("https://aprtechsupport.zendesk.com/api/v2/users.json")
 	request = Net::HTTP::Get.new(uri)
@@ -25,7 +29,9 @@ def self.save_data_from_api
 		u.save
 		u
 	end
-	
+
+
 end
+=end
 
 end

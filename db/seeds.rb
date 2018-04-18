@@ -11,7 +11,7 @@ require 'uri'
 require 'json'
 require 'faker'
 
-
+#using http gem to build our call to Zendesk's API. Authenticating with my user info as Admin on our zendesk portal. 
 uri = URI.parse("https://aprtechsupport.zendesk.com/api/v2/users.json")
 request = Net::HTTP::Get.new(uri)
 request.content_type = "application/json"
@@ -24,13 +24,11 @@ req_options = {
 @response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
   http.request(request)
 end
-puts @response.body
-puts @response.message
-puts @response.code
+
 
 info = @response.body 
 
-
+#zendesk passes non UTF characters in the JSON response, so must force encoding. 
 info.force_encoding("utf-8")
 
 File.write('aprzendeskusers.json', info)
@@ -43,7 +41,7 @@ file = File.read('aprzendeskusers.json')
 users = JSON.load(file)['users']
 
 users.each do |a|
-	User.find_or_create_by(:zendesk_id_int => a["id"], :url => a["url"], :name => a["name"], :email => a["email"],
+	User.find_or_create_by(:zen_id => a["id"], :url => a["url"], :name => a["name"], :email => a["email"],
 		:phone => a["phone"], :role => a["role"], :default_group_id => a["default_group_id"], :external_id => a["external_id"],
 		:tags => a["tags"]
 		)
@@ -77,9 +75,9 @@ while nextURL["next_page"]
   users = JSON.load(file)['users']
 
   users.each do |a|
-	  User.find_or_create_by(:zen_id => a["id"], :url => a["url"], :name => a["name"], :email => a["email"],
-		  :phone => a["phone"], :role => a["role"], :default_group_id => a["default_group_id"], :external_id => a["external_id"],
-		  :tags => a["tags"]
+	  User.find_or_create_by(:zen_id => a['id'], :url => a['url'], :name => a['name'], :email => a['email'],
+		  :phone => a['phone'], :role => a['role'], :default_group_id => a['default_group_id'], :external_id => a['external_id'],
+		  :tags => a['tags']
 		  	)
   end
   
@@ -105,9 +103,7 @@ req_options2 = {
 @response2 = Net::HTTP.start(uri2.hostname, uri2.port, req_options2) do |http|
   http.request(request2)
 end
-puts @response2.body
-puts @response2.message
-puts @response2.code
+
 
 info2 = @response2.body 
 
@@ -129,7 +125,7 @@ tickets.each do |a|
 		:a_id => a['assignee_id'], :g_id => a['group_id'], :created_at => a['created_at'], :external_id_string => a['external_id'],
 		:updated_at => a['updated_at']
 		)
-end
+	end
 
 nextURL2 = JSON.parse(info2)
 while nextURL2["next_page"]
@@ -165,8 +161,9 @@ while nextURL2["next_page"]
 		:a_id => a['assignee_id'], :g_id => a['group_id'], :created_at => a['created_at'], :external_id_string => a['external_id'],
 		:updated_at => a['updated_at']
 		)
-end
+	end
   
+  puts "#{Ticket.count} tickets created"
 
   resLoop2 = JSON.parse(infoLoop2)
   updateUri2 = resLoop2["next_page"]
@@ -188,9 +185,7 @@ req_options3 = {
 @response3 = Net::HTTP.start(uri3.hostname, uri3.port, req_options3) do |http|
   http.request(request3)
 end
-puts @response3.body
-puts @response3.message
-puts @response3.code
+
 
 info3 = @response3.body 
 
@@ -212,7 +207,7 @@ ticket_metrics.each do |a|
 		:created_at => a['created_at'],
 		:updated_at => a['updated_at']
 		)
-end
+	end
 
 nextURL3 = JSON.parse(info3)
 while nextURL3["next_page"]
@@ -248,8 +243,9 @@ while nextURL3["next_page"]
 		:created_at => a['created_at'],
 		:updated_at => a['updated_at']
 		)
-  end
+  	end
   
+  puts "#{TicketMetric.count} ticket metric records created"
 
   resLoop3 = JSON.parse(infoLoop3)
   updateUri3 = resLoop3["next_page"]
@@ -258,8 +254,8 @@ end
 
 
 puts "Seed Finished"
-puts "#{User.count} users created"
-puts "#{Ticket.count} tickets created"
-puts "#{TicketMetric.count} ticket metric records created"
+puts "#{User.count} total users created"
+puts "#{Ticket.count} total tickets created"
+puts "#{TicketMetric.count} t otal ticket metric records created"
 
 

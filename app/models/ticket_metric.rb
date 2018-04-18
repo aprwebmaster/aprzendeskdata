@@ -1,2 +1,5 @@
 class TicketMetric < ApplicationRecord
+
+	
+	
 end
