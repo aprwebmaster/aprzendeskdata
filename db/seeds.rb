@@ -203,7 +203,7 @@ ticket_metrics = JSON.load(file3)['ticket_metrics']
 
 ticket_metrics.each do |a|
 	TicketMetric.find_or_create_by(:zen_id => a['id'], :tick_id => a['ticket_id'], :assignee_updated_at => a['assignee_updated_at'], :initially_assigned_at => a['initially_assigned_at'],
-		:solved_at => a['solved_at'], :first_resolution_time_in_minutes => a['first_resolution_time'], :full_resolution_time_in_minutes => a['full_resolution_time'], :external_id_string => a['external_id'],
+		:solved_at => a['solved_at'], :first_resolution_time_in_minutes => a['first_resolution_time_in_minutes'], :full_resolution_time_in_minutes => a['full_resolution_time_in_minutes'], :reply_time_in_minutes => a['reply_time_in_minutes'], :external_id_string => a['external_id'],
 		:created_at => a['created_at'],
 		:updated_at => a['updated_at']
 		)
@@ -214,7 +214,7 @@ while nextURL3["next_page"]
  newUri3 = nextURL3["next_page"]
  uriLoop3 = URI.parse(newUri3)
  puts newUri3
- requestLoop3 = Net::HTTP::Get.new(uriLoop2)
+ requestLoop3 = Net::HTTP::Get.new(uriLoop3)
  requestLoop3.content_type = "application/json"
  requestLoop3.basic_auth("cbradford@apr.com", "cstyle32")
 
@@ -239,7 +239,7 @@ while nextURL3["next_page"]
 
   ticket_metrics.each do |a|
 	  TicketMetric.find_or_create_by(:zen_id => a['id'], :tick_id => a['ticket_id'], :assignee_updated_at => a['assignee_updated_at'], :initially_assigned_at => a['initially_assigned_at'],
-	  	:solved_at => a['solved_at'], :first_resolution_time_in_minutes => a['first_resolution_time'], :full_resolution_time_in_minutes => a['full_resolution_time'], :external_id_string => a['external_id'],
+	  	:solved_at => a['solved_at'], :first_resolution_time_in_minutes => a['first_resolution_time_in_minutes'], :full_resolution_time_in_minutes => a['full_resolution_time_in_minutes'], :reply_time_in_minutes => a['reply_time_in_minutes'], :external_id_string => a['external_id'],
 		:created_at => a['created_at'],
 		:updated_at => a['updated_at']
 		)
@@ -256,6 +256,6 @@ end
 puts "Seed Finished"
 puts "#{User.count} total users created"
 puts "#{Ticket.count} total tickets created"
-puts "#{TicketMetric.count} t otal ticket metric records created"
+puts "#{TicketMetric.count} total ticket metric records created"
 
 

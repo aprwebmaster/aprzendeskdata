@@ -1,7 +1,23 @@
 <h1>Charts</h1>
 
-<p> <%= line_chart Ticket.group_by_day(:updated_at).count %></p>
+<p> Edgar Data </p>
+<p> <%= p $edgarBusinessHours %></p>
+<p> <%= p $edgarCalendarHours %></p>
 
-<p> <%= column_chart Ticket.group(:a_id, :status).count %> 
+<p> Morgan Data </p>
+<p> <%= p $morganBusinessHours %></p>
+<p> <%= p $morganCalendarHours %></p>
+
+<p> Elise Data </p>
+<p> <%= p $eliseBusinessHours %> </p>
+<p> <%= p $eliseCalendarHours %> </p>
+
+<p> Raul Data </p>
+<p> <%= p $raulBusinessHours %> </p>
+<p> <%= p $raulCalendarHours %> </p>
+
+<p> <%= line_chart Ticket.recents.group_by_day(:updated_at).count %></p>
+
+<p> <%= column_chart Ticket.recents.group(:a_id, :status).count %> </p>
 
  

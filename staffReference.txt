@@ -1,0 +1,44 @@
+
+
+User Information for staff in Zendesk: 
+
+name: Daniel Hernandez
+zen_id: 425647379
+email: dhernad@apr.com 
+id: 44850
+
+name: Randy Buchholz 
+zen_id: 333653859
+email: rbuchholz@apr.com 
+id: 44840
+
+name: Greg Kinnicut 
+zen_id: 360201466063
+email: gregorykinnicutt@gmail.com 
+id: 51081
+
+name: Edgar Cisneros 
+zen_id: 2661956646
+email: ecisneros@apr.com
+id: 49079 
+
+name: Morgan Winn
+zen_id: 360435687346
+email: mwinn@apr.com 
+
+name: Raul Ortega
+zen_id: 360303091423
+email: rortega@apr.com 
+
+name: Elise Cuevas
+zen_id: 1410567703
+email: ecuevas@apr.com 
+
+name: Help Desk (Christopher Bradford)
+zen_id: 395370529
+email: cbradford@apr.com 
+
+
+name: Kevin Keenan
+zen_id: 351935785
+email: kkeenan@apr.com 
