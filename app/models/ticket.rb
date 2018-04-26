@@ -1,5 +1,4 @@
 class Ticket < ApplicationRecord
-	scope :recents, -> { where("created_at > ?", Time.now - 7.days) }
-	
+	scope :recents, -> { uncached { where("created_at > ?", Time.now - 7.days) }}
 	
 end
