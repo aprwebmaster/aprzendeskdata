@@ -29,8 +29,11 @@
 <p> Calendar Hours: <b><%= p $raulCalendarHours %></b> </p>
 </div>
 <hr>
+<h2> Tickets Updated by Day</h2>
 <p> <%= line_chart Ticket.recents.group_by_day(:updated_at).count %></p>
 
+
+<h2>Ticket Status by User</h2>
 <p> <%= column_chart Ticket.recents.group(:a_id, :status).count %> </p>
 
  
