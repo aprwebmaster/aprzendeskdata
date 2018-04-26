@@ -1,21 +1,34 @@
-<h1>Charts</h1>
+<h1>Zendesk Data</h1>
 
-<p> Edgar Data </p>
-<p> <%= p $edgarBusinessHours %></p>
-<p> <%= p $edgarCalendarHours %></p>
+<div>
+<h3>Edgar Reply Time Data </h3>
+<h5>Median Reply Time by Minutes</h5>
+<p> During Business Hours: <b><%= p $edgarBusinessHours %></b></p>
+<p> Calendar Hours: <b><%= p $edgarCalendarHours %></b></p>
+</div>
+<hr>
 
-<p> Morgan Data </p>
-<p> <%= p $morganBusinessHours %></p>
-<p> <%= p $morganCalendarHours %></p>
-
-<p> Elise Data </p>
-<p> <%= p $eliseBusinessHours %> </p>
-<p> <%= p $eliseCalendarHours %> </p>
-
-<p> Raul Data </p>
-<p> <%= p $raulBusinessHours %> </p>
-<p> <%= p $raulCalendarHours %> </p>
-
+<div>
+<h3> Morgan Reply Time Data </h3>
+<h5>Median Reply Time by Minutes</h5>
+<p> During Business Hours: <b><%= p $morganBusinessHours %></b></p>
+<p> Calendar Hours: <b><%= p $morganCalendarHours %></b></p>
+</div>
+<hr>
+<div>
+<h3> Elise Reply Time Data </h3>
+<h5>Median Reply Time by Minutes</h5>
+<p> During Business Hours: <b><%= p $eliseBusinessHours %></b> </p>
+<p> Calendar Hours: <b><%= p $eliseCalendarHours %></b></p>
+</div>
+<hr>
+<div>
+<h3> Raul Reply Time Data </h3>
+<h5>Median Reply Time by Minutes</h5>
+<p> During Business Hours: <b><%= p $raulBusinessHours %></b> </p>
+<p> Calendar Hours: <b><%= p $raulCalendarHours %></b> </p>
+</div>
+<hr>
 <p> <%= line_chart Ticket.recents.group_by_day(:updated_at).count %></p>
 
 <p> <%= column_chart Ticket.recents.group(:a_id, :status).count %> </p>
