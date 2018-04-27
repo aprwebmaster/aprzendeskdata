@@ -1,6 +1,4 @@
-
-    
-    edgarTickets = Ticket.recents.where(:a_id => 2661956646) 
+edgarTickets = Ticket.recents.where(:a_id => 2661956646) 
     
     #empty array to store individual tickets in 
     @edgarTicketValues = []
@@ -75,11 +73,13 @@
     $edgarrtbh = replyTimeDuringBusinessHours
 
   #this calculates the MEDIAN and returns it
+
   def median(array)
     sorted = array.sort
     len = sorted.length
     return (sorted[(len - 1) / 2] + sorted[len / 2]) / 2.0
   end
+
 
   $edgarBusinessHours = median($edgarrtbh)
   $edgarCalendarHours = median($edgarrtch)

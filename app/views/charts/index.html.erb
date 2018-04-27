@@ -1,5 +1,15 @@
 <h1>APR Zendesk Data</h1>
-
+<br>
+<div>
+	<h2>Median Reply Time during Business Hours </h2>
+<p> <%= bar_chart ({"Morgan" => $morganBusinessHours, "Elise" => $eliseBusinessHours, "Raul" => $raulBusinessHours, "Edgar" => $edgarBusinessHours})%></p>
+</div>
+<br>
+<div>
+	<h2>Median Full Resolution Time during Business Hours </h2>
+<p> <%= bar_chart ({"Morgan" => $morganFullResoBusinessHours, "Elise" => $eliseFullResoBusinessHours, "Raul" => $raulFullResoBusinessHours, "Edgar" => $edgarFullResoBusinessHours})%></p>
+</div>
+<br>
 <div>
 <h3>Edgar Reply Time Data </h3>
 <h5>Median Reply Time by Minutes</h5>
@@ -58,11 +68,6 @@
 <p> Calendar Hours: <b><%= p $raulFullResoCalendarHours %></b></p>
 </div>
 <hr>
-<h2> Tickets Updated by Day</h2>
-<p> <%= line_chart Ticket.recents.group_by_day(:updated_at).count %></p>
 
-
-<h2>Ticket Status by User</h2>
-<p> <%= column_chart Ticket.recents.group(:a_id, :status).count %> </p>
 
  

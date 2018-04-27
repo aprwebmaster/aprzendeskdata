@@ -74,10 +74,17 @@
     $edgarfrbh = fullResoDuringBusinessHours
 
   #this calculates the MEDIAN and returns it
+=begin
   def median(array)
     sorted = array.sort
     len = sorted.length
     return (sorted[(len - 1) / 2] + sorted[len / 2]) / 2.0
+  end
+=end
+  def median(ary)
+  mid = ary.length / 2
+  sorted = ary.sort
+  ary.length.odd? ? sorted[mid] : 0.5 * (sorted[mid] + sorted[mid - 1])
   end
 
   $edgarFullResoBusinessHours = median($edgarfrbh)
