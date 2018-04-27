@@ -11,6 +11,8 @@ require 'uri'
 require 'json'
 require 'faker'
 
+
+
 #using http gem to build our call to Zendesk's API. Authenticating with my user info as Admin on our zendesk portal. 
 uri = URI.parse("https://aprtechsupport.zendesk.com/api/v2/users.json")
 request = Net::HTTP::Get.new(uri)
@@ -204,8 +206,7 @@ ticket_metrics = JSON.load(file3)['ticket_metrics']
 ticket_metrics.each do |a|
 	TicketMetric.find_or_create_by(:zen_id => a['id'], :tick_id => a['ticket_id'], :assignee_updated_at => a['assignee_updated_at'], :initially_assigned_at => a['initially_assigned_at'],
 		:solved_at => a['solved_at'], :first_resolution_time_in_minutes => a['first_resolution_time_in_minutes'], :full_resolution_time_in_minutes => a['full_resolution_time_in_minutes'], :reply_time_in_minutes => a['reply_time_in_minutes'], :external_id_string => a['external_id'],
-		:created_at => a['created_at'],
-		:updated_at => a['updated_at']
+		:created_at => a['created_at'], :updated_at => a['updated_at']
 		)
 	end
 
@@ -228,7 +229,7 @@ while nextURL3["next_page"]
   infoLoop3 = @responseLoop3.body
   infoLoop3.force_encoding("utf-8")
 
-  File.write('aprzendeskticketsmetrics.json', infoLoop3)
+  File.write('aprzendeskticketmetrics.json', infoLoop3)
 
 
   puts "File Created Successfully!"
@@ -240,8 +241,7 @@ while nextURL3["next_page"]
   ticket_metrics.each do |a|
 	  TicketMetric.find_or_create_by(:zen_id => a['id'], :tick_id => a['ticket_id'], :assignee_updated_at => a['assignee_updated_at'], :initially_assigned_at => a['initially_assigned_at'],
 	  	:solved_at => a['solved_at'], :first_resolution_time_in_minutes => a['first_resolution_time_in_minutes'], :full_resolution_time_in_minutes => a['full_resolution_time_in_minutes'], :reply_time_in_minutes => a['reply_time_in_minutes'], :external_id_string => a['external_id'],
-		:created_at => a['created_at'],
-		:updated_at => a['updated_at']
+		:created_at => a['created_at'], :updated_at => a['updated_at']
 		)
   	end
   
