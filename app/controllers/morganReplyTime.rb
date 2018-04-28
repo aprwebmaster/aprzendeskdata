@@ -67,20 +67,20 @@
     replyTimeDuringBusinessHours = @metricsBusinessValues
 
     #for calculating MEAN uncomment the below
-    #$edgarrtch = replyTimeDuringCalendarHours.instance_eval { reduce(:+) / size.to_f } 
-    #$edgarrtbh = replyTimeDuringBusinessHours.instance_eval { reduce(:+) / size.to_f }
+    $morganrtch = replyTimeDuringCalendarHours.instance_eval { reduce(:+) / size.to_f } 
+    $morganrtbh = replyTimeDuringBusinessHours.instance_eval { reduce(:+) / size.to_f }
 
-    $morganrtch = replyTimeDuringCalendarHours
-    $morganrtbh = replyTimeDuringBusinessHours
-
+    #$morganrtch = replyTimeDuringCalendarHours
+    #$morganrtbh = replyTimeDuringBusinessHours
+=begin
   #this calculates the MEDIAN and returns it
   def median(array)
     sorted = array.sort
     len = sorted.length
     return (sorted[(len - 1) / 2] + sorted[len / 2]) / 2.0
   end
-
-  $morganBusinessHours = median($morganrtbh)
-  $morganCalendarHours = median($morganrtch)
+=end
+  $morganBusinessHours = $morganrtbh
+  $morganCalendarHours = $morganrtch
 
 

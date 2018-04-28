@@ -66,20 +66,22 @@ eliseTickets = Ticket.recents.where(:a_id => 1410567703)
     replyTimeDuringBusinessHours = @metricsBusinessValues
 
     #for calculating MEAN uncomment the below
-    #$edgarrtch = replyTimeDuringCalendarHours.instance_eval { reduce(:+) / size.to_f } 
-    #$edgarrtbh = replyTimeDuringBusinessHours.instance_eval { reduce(:+) / size.to_f }
+    $elisertch = replyTimeDuringCalendarHours.instance_eval { reduce(:+) / size.to_f } 
+    $elisertbh = replyTimeDuringBusinessHours.instance_eval { reduce(:+) / size.to_f }
 
-    $elisertch = replyTimeDuringCalendarHours
-    $elisertbh = replyTimeDuringBusinessHours
-
+    #For calculating MEDIAN use the below 
+    #$elisertch = replyTimeDuringCalendarHours
+    #$elisertbh = replyTimeDuringBusinessHours
+=begin
   #this calculates the MEDIAN and returns it
   def median(array)
     sorted = array.sort
     len = sorted.length
     return (sorted[(len - 1) / 2] + sorted[len / 2]) / 2.0
   end
+=end 
 
-  $eliseBusinessHours = median($elisertbh)
-  $eliseCalendarHours = median($elisertch)
+  $eliseBusinessHours = $elisertbh
+  $eliseCalendarHours = $elisertch
 
 

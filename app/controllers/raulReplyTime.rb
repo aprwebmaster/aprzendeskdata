@@ -66,20 +66,21 @@ raulTickets = Ticket.recents.where(:a_id => 360303091423)
     replyTimeDuringBusinessHours = @metricsBusinessValues
 
     #for calculating MEAN uncomment the below
-    #$edgarrtch = replyTimeDuringCalendarHours.instance_eval { reduce(:+) / size.to_f } 
-    #$edgarrtbh = replyTimeDuringBusinessHours.instance_eval { reduce(:+) / size.to_f }
+    $raulrtch = replyTimeDuringCalendarHours.instance_eval { reduce(:+) / size.to_f } 
+    $raulrtbh = replyTimeDuringBusinessHours.instance_eval { reduce(:+) / size.to_f }
 
-    $raulrtch = replyTimeDuringCalendarHours
-    $raulrtbh = replyTimeDuringBusinessHours
-
+    #For Calculating MEDIAN uncomment the below 
+    #$raulrtch = replyTimeDuringCalendarHours
+    #$raulrtbh = replyTimeDuringBusinessHours
+=begin
   #this calculates the MEDIAN and returns it
   def median(array)
     sorted = array.sort
     len = sorted.length
     return (sorted[(len - 1) / 2] + sorted[len / 2]) / 2.0
   end
-
-  $raulBusinessHours = median($raulrtbh)
-  $raulCalendarHours = median($raulrtch)
+=end
+  $raulBusinessHours = $raulrtbh
+  $raulCalendarHours = $raulrtch
 
 
