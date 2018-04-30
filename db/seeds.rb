@@ -11,7 +11,12 @@ require 'uri'
 require 'json'
 require 'faker'
 
-
+User.delete_all
+puts "Users have been deleted."
+Ticket.delete_all 
+puts "Tickets have been deleted."
+TicketMetric.delete_all
+puts "TicketMetrics have been deleted."
 
 #using http gem to build our call to Zendesk's API. Authenticating with my user info as Admin on our zendesk portal. 
 uri = URI.parse("https://aprtechsupport.zendesk.com/api/v2/users.json")
