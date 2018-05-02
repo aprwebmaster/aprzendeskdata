@@ -49,6 +49,7 @@ gem 'faker'
 gem 'zendesk_api'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'groupdate'
+gem 'whenever'
 
 
 
