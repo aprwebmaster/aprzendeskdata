@@ -34,4 +34,4 @@ every 17.minutes do
 end
 every 20.minutes do 
 	command "cd /Users/christopherbradford/railsProjects/aprzendeskdata && git push heroku master"
-end 
+end
