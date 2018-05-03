@@ -18,7 +18,7 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-
+=begin
 every 10.minutes do 
 	rake 'db:seed'
 end
@@ -35,3 +35,4 @@ end
 every 20.minutes do 
 	command "cd /Users/christopherbradford/railsProjects/aprzendeskdata && git push heroku master"
 end
+=end 

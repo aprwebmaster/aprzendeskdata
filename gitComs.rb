@@ -1,0 +1,5 @@
+system 'echo git add .'
+system 'echo git commit -m "regular update"'
+system 'echo git push'
+system 'echo git push heroku master'
+system 'exit 1'
