@@ -9,7 +9,7 @@
 require 'net/http'
 require 'uri'
 require 'json'
-require 'faker'
+
 
 User.delete_all
 puts "Users have been deleted."
