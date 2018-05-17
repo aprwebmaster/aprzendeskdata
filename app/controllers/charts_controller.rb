@@ -8,6 +8,7 @@ class ChartsController < ApplicationController
 	load 'eliseFullResolution.rb'
 	load 'raulReplyTime.rb'  
 	load 'raulFullResolution.rb'
+ 
 
   def index
   	@users = User.all 

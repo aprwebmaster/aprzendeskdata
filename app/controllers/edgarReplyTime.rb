@@ -1,4 +1,3 @@
-require 'csv'
 
 edgarTickets = Ticket.recents.where(:a_id => 2661956646) 
     
@@ -86,11 +85,7 @@ edgarTickets = Ticket.recents.where(:a_id => 2661956646)
   $edgarBusinessHours = $edgarrtbh
   $edgarCalendarHours = $edgarrtch
 
-  #write array to file 
-
-CSV.open("edgarBHReply.csv", "w") do |csv|
-  csv << $edgarBusinessHours
-end
+  
  
 
 
