@@ -1,4 +1,5 @@
 
+
 edgarTickets = Ticket.recents.where(:a_id => 2661956646) 
     
     #empty array to store individual tickets in 
@@ -85,7 +86,8 @@ edgarTickets = Ticket.recents.where(:a_id => 2661956646)
   $edgarBusinessHours = $edgarrtbh
   $edgarCalendarHours = $edgarrtch
 
-  
+
+  File.write('edgarBusiness.csv', @edgarTicketValues)
  
 
 
