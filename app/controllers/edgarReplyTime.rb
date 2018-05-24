@@ -63,10 +63,16 @@ edgarTickets = Ticket.recents.where(:a_id => 2661956646)
       end
     end
 
-     #collect values of ticketmetrics and store reply_time_in_minutes within an array.
+
+
+     #collect values of ticket ID and stores in array
     @metrics.collect do |value|
       @metricID << value["tick_id"]
     end
+
+    @metricIDString = @metricID.map(&:to_s)
+    @metricIDHash = {}.compare_by_identity
+    @metricIDString.each_with_index{|k,v| @metricIDHash[k] = v}
 
     #assigning data from instance variables to easy-to-understand variables for doing maths. 
     
@@ -92,20 +98,40 @@ edgarTickets = Ticket.recents.where(:a_id => 2661956646)
   $edgarBusinessHours = $edgarrtbh
   $edgarCalendarHours = $edgarrtch
 
- 
 
-  CSV.open("edgarTimes.csv", "wb") do |csv|
+#@metricsTimes << @metricIDHash
+
+
+#print @metricsTimes
+
+  CSV.open("edgarReplyTimeData.csv", "wb") do |csv|
    
     csv << @metricsTimes.first.keys # adds the attributes name on the first line
     @metricsTimes.each do |hash|
       csv << hash.values
     end
+    @metricIDHash.each_with_index do |hash|
+      csv << hash
+    end
   end
 
-  File.write('edgarBusiness.txt', @metricsTimes)
+=begin
+i = 0
+
+CSV.parse("edgarTimes.csv") do |row| 
+
+    new_csv = CSV.open("edgarTimesJoined.csv", "wb") do |new_csv| 
+        new_csv << row + [@metricIDHash[i]]
+        i += 1
+    end 
+    
+    print new_csv
+end 
+=end 
+  
 
  
-@metricID.to_s
 
-puts @metricID
+
+
 

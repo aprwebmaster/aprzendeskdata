@@ -61,6 +61,17 @@
       end
     end
 
+     #collect values of ticket ID and stores in array
+    @metrics.collect do |value|
+      @metricID << value["tick_id"]
+    end
+
+
+    @metricIDString = @metricID.map(&:to_s)
+    @metricIDHash = {}.compare_by_identity
+    @metricIDString.each_with_index{|k,v| @metricIDHash[k] = v}
+
+
     #assigning data from instance variables to easy-to-understand variables for doing maths. 
     
     replyTimeDuringCalendarHours = @metricsCalendarValues
@@ -83,4 +94,16 @@
   $morganBusinessHours = $morganrtbh
   $morganCalendarHours = $morganrtch
 
+
+
+  CSV.open("morganReplyTimeData.csv", "wb") do |csv|
+   
+    csv << @metricsTimes.first.keys # adds the attributes name on the first line
+    @metricsTimes.each do |hash|
+      csv << hash.values
+    end
+    @metricIDHash.each_with_index do |hash|
+      csv << hash
+    end
+  end
 
