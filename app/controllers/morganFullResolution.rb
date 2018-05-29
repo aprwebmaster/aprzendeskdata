@@ -1,4 +1,4 @@
-morganTickets = Ticket.recents.where(:a_id => 360435687346) 
+=begin morganTickets = Ticket.recents.where(:a_id => 360435687346) 
     
     #empty array to store individual tickets in 
     @morganTicketValues = []
@@ -81,3 +81,4 @@ morganTickets = Ticket.recents.where(:a_id => 360435687346)
 
   $morganFullResoBusinessHours = median($morganfrbh)
   $morganFullResoCalendarHours = median($morganfrch)
+  =end
