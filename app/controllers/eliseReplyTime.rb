@@ -21,7 +21,8 @@ eliseTickets = Ticket.recents.where(:a_id => 1410567703)
     @metricsCalendarValues = []
     @metricsBusinessValues = []
     @metricsTimes = []
-    
+    @metricID = []
+
     #iterates through each zen_id, adds the TicketMetric with matching tick_id to an array 
     @eliseTicketId.each do |value|
       metric = TicketMetric.where(:tick_id => value)
