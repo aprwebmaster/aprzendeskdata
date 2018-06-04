@@ -18,71 +18,71 @@
     end
 
     #create empty arrays to hold more values 
-    @metrics = []
-    @metricsCalendarValues = []
-    @metricsBusinessValues = []
-    @metricsTimes = []
+    @morganMetrics = []
+    @morganMetricsCalendarValues = []
+    @morganMetricsBusinessValues = []
+    @morganMetricsTimes = []
     
     #iterates through each zen_id, adds the TicketMetric with matching tick_id to an array 
     @morganTicketId.each do |value|
       metric = TicketMetric.where(:tick_id => value)
         metric.each do |values|
-          @metrics << values 
+          @morganMetrics << values 
         end
       
     end
 
     #collect values of ticketmetrics and store reply_time_in_minutes within an array.
-    @metrics.collect do |value|
-      @metricsTimes << value["reply_time_in_minutes"]
+    @morganMetrics.collect do |value|
+      @morganMetricsTimes << value["reply_time_in_minutes"]
     end
 
    
     #extracting the reply time during all hours by storing each ticket's reply time in an array , adding zeros for nil values so averages are accurate. 
-    @metricsTimes.each do |value|
+    @morganMetricsTimes.each do |value|
 
       v = value["calendar"]
       if v != nil
-      @metricsCalendarValues << v 
+      @morganMetricsCalendarValues << v 
       else
-      #@metricsBusinessValues << 0 include this if calculating MEAN instead of MEDIAN
+      #@morganMetricsBusinessValues << 0 include this if calculating MEAN instead of MEDIAN
         next  
       end
     end
 
     #extracting the reply time during ONLY business hours. Adds zero to the arrays so that averages reflect an accurate time measurement. 
-    @metricsTimes.each do |value|
+    @morganMetricsTimes.each do |value|
       b = value["business"]
       if b != nil
-      @metricsBusinessValues << b 
+      @morganMetricsBusinessValues << b 
       else
-     # @metricsBusinessValues << 0 include this if calculating MEAN instead of MEDIAN 
+     # @morganMetricsBusinessValues << 0 include this if calculating MEAN instead of MEDIAN 
         next
       end
     end
 
      #collect values of ticket ID and stores in array
-    @metrics.collect do |value|
-      @metricID << value["tick_id"]
+    @morganMetrics.collect do |value|
+      @morganMetricID << value["tick_id"]
     end
 
 
-    @metricIDString = @metricID.map(&:to_s)
-    @metricIDHash = {}.compare_by_identity
-    @metricIDString.each_with_index{|k,v| @metricIDHash[k] = v}
+    @morganMetricIDString = @morganMetricID.map(&:to_s)
+    @morganMetricIDHash = {}.compare_by_identity
+    @morganMetricIDString.each_with_index{|k,v| @morganMetricIDHash[k] = v}
 
 
     #assigning data from instance variables to easy-to-understand variables for doing maths. 
     
-    replyTimeDuringCalendarHours = @metricsCalendarValues
-    replyTimeDuringBusinessHours = @metricsBusinessValues
+    morganreplyTimeDuringCalendarHours = @morganMetricsCalendarValues
+    morganreplyTimeDuringBusinessHours = @morganMetricsBusinessValues
 
     #for calculating MEAN uncomment the below
-    $morganrtch = replyTimeDuringCalendarHours.instance_eval { reduce(:+) / size.to_f } 
-    $morganrtbh = replyTimeDuringBusinessHours.instance_eval { reduce(:+) / size.to_f }
+    $morganrtch = morganreplyTimeDuringCalendarHours.instance_eval { reduce(:+) / size.to_f } 
+    $morganrtbh = morganreplyTimeDuringBusinessHours.instance_eval { reduce(:+) / size.to_f }
 
-    #$morganrtch = replyTimeDuringCalendarHours
-    #$morganrtbh = replyTimeDuringBusinessHours
+    #$morganrtch = morganreplyTimeDuringCalendarHours
+    #$morganrtbh = morganreplyTimeDuringBusinessHours
 =end
 =begin
   #this calculates the MEDIAN and returns it
@@ -100,11 +100,11 @@
 
   CSV.open("morganReplyTimeData.csv", "wb") do |csv|
    
-    csv << @metricsTimes.first.keys # adds the attributes name on the first line
-    @metricsTimes.each do |hash|
+    csv << @morganMetricsTimes.first.keys # adds the attributes name on the first line
+    @morganMetricsTimes.each do |hash|
       csv << hash.values
     end
-    @metricIDHash.each_with_index do |hash|
+    @morganMetricIDHash.each_with_index do |hash|
       csv << hash
     end
   end

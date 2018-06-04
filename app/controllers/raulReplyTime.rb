@@ -17,32 +17,33 @@ raulTickets = Ticket.recents.where(:a_id => 360303091423)
     end
 
     #create empty arrays to hold more values 
-    @metrics = []
-    @metricsCalendarValues = []
-    @metricsBusinessValues = []
-    @metricsTimes = []
+    @raulMetrics = []
+    @raulMetricsCalendarValues = []
+    @raulMetricsBusinessValues = []
+    @raulMetricsTimes = []
+    @raulMetricID = []
     
     #iterates through each zen_id, adds the TicketMetric with matching tick_id to an array 
     @raulTicketId.each do |value|
       metric = TicketMetric.where(:tick_id => value)
         metric.each do |values|
-          @metrics << values 
+          @raulMetrics << values 
         end
       
     end
 
     #collect values of ticketmetrics and store reply_time_in_minutes within an array.
-    @metrics.collect do |value|
-      @metricsTimes << value["reply_time_in_minutes"]
+    @raulMetrics.collect do |value|
+      @raulMetricsTimes << value["reply_time_in_minutes"]
     end
 
    
     #extracting the reply time during all hours by storing each ticket's reply time in an array , adding zeros for nil values so averages are accurate. 
-    @metricsTimes.each do |value|
+    @raulMetricsTimes.each do |value|
 
       v = value["calendar"]
       if v != nil
-      @metricsCalendarValues << v 
+      @raulMetricsCalendarValues << v 
       else
       #@metricsBusinessValues << 0 include this if calculating MEAN instead of MEDIAN
         next  
@@ -50,10 +51,10 @@ raulTickets = Ticket.recents.where(:a_id => 360303091423)
     end
 
     #extracting the reply time during ONLY business hours. Adds zero to the arrays so that averages reflect an accurate time measurement. 
-    @metricsTimes.each do |value|
+    @raulMetricsTimes.each do |value|
       b = value["business"]
       if b != nil
-      @metricsBusinessValues << b 
+      @raulMetricsBusinessValues << b 
       else
      # @metricsBusinessValues << 0 include this if calculating MEAN instead of MEDIAN 
         next
@@ -61,24 +62,24 @@ raulTickets = Ticket.recents.where(:a_id => 360303091423)
     end
 
      #collect values of ticket ID and stores in array
-    @metrics.collect do |value|
-      @metricID << value["tick_id"]
+    @raulMetrics.collect do |value|
+      @raulMetricID << value["tick_id"]
     end
 
 
-    @metricIDString = @metricID.map(&:to_s)
-    @metricIDHash = {}.compare_by_identity
-    @metricIDString.each_with_index{|k,v| @metricIDHash[k] = v}
+    @raulMetricIDString = @raulMetricID.map(&:to_s)
+    @raulMetricIDHash = {}.compare_by_identity
+    @raulMetricIDString.each_with_index{|k,v| @raulMetricIDHash[k] = v}
 
     
     #assigning data from instance variables to easy-to-understand variables for doing maths. 
     
-    replyTimeDuringCalendarHours = @metricsCalendarValues
-    replyTimeDuringBusinessHours = @metricsBusinessValues
+    raulreplyTimeDuringCalendarHours = @raulMetricsCalendarValues
+    raulreplyTimeDuringBusinessHours = @raulMetricsBusinessValues
 
     #for calculating MEAN uncomment the below
-    $raulrtch = replyTimeDuringCalendarHours.instance_eval { reduce(:+) / size.to_f } 
-    $raulrtbh = replyTimeDuringBusinessHours.instance_eval { reduce(:+) / size.to_f }
+    $raulrtch = raulreplyTimeDuringCalendarHours.instance_eval { reduce(:+) / size.to_f } 
+    $raulrtbh = raulreplyTimeDuringBusinessHours.instance_eval { reduce(:+) / size.to_f }
 
     #For Calculating MEDIAN uncomment the below 
     #$raulrtch = replyTimeDuringCalendarHours
@@ -98,11 +99,11 @@ raulTickets = Ticket.recents.where(:a_id => 360303091423)
 
   CSV.open("raulReplyTimeData.csv", "wb") do |csv|
    
-    csv << @metricsTimes.first.keys # adds the attributes name on the first line
-    @metricsTimes.each do |hash|
+    csv << @raulMetricsTimes.first.keys # adds the attributes name on the first line
+    @raulMetricsTimes.each do |hash|
       csv << hash.values
     end
-    @metricIDHash.each_with_index do |hash|
+    @raulMetricIDHash.each_with_index do |hash|
       csv << hash
     end
   end
