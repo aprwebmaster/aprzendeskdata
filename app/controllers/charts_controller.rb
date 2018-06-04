@@ -2,8 +2,8 @@ class ChartsController < ApplicationController
 
 	load 'edgarReplyTime.rb'
 	load 'edgarFullResolution.rb'
-	#load 'morganReplyTime.rb'
-	#load 'morganFullResolution.rb'
+	load 'morganReplyTime.rb'
+	load 'morganFullResolution.rb'
 	load 'eliseReplyTime.rb'
 	load 'eliseFullResolution.rb'
 	load 'raulReplyTime.rb'  
@@ -37,8 +37,8 @@ class ChartsController < ApplicationController
   	puts  $edgarFullResoCalendarHours 
 
 
-  	#puts $morganBusinessHours
-  	#puts $morganCalendarHours 
+  	puts $morganBusinessHours
+  	puts $morganCalendarHours 
 
   	puts $morganFullResoBusinessHours 
   	puts $morganFullResoCalendarHours 

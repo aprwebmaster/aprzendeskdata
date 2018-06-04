@@ -1,4 +1,4 @@
-=begin morganTickets = Ticket.recents.where(:a_id => 360435687346) 
+ morganTickets = Ticket.recents.where(:a_id => 360435687346) 
     
     #empty array to store individual tickets in 
     @morganTicketValues = []
@@ -17,32 +17,32 @@
     end
 
     #create empty arrays to hold more values 
-    @metrics = []
-    @metricsCalendarValues = []
-    @metricsBusinessValues = []
-    @metricsTimes = []
+    @morganMetrics = []
+    @morganMetricsCalendarValues = []
+    @morganMetricsBusinessValues = []
+    @morganMetricsTimes = []
     
     #iterates through each zen_id, adds the TicketMetric with matching tick_id to an array 
     @morganTicketId.each do |value|
       metric = TicketMetric.where(:tick_id => value)
         metric.each do |values|
-          @metrics << values 
+          @morganMetrics << values 
         end
       
     end
 
     #collect values of ticketmetrics and store reply_time_in_minutes within an array.
-    @metrics.collect do |value|
-      @metricsTimes << value["full_resolution_time_in_minutes"]
+    @morganMetrics.collect do |value|
+      @morganMetricsTimes << value["full_resolution_time_in_minutes"]
     end
 
    
     #extracting the reply time during all hours by storing each ticket's reply time in an array , adding zeros for nil values so averages are accurate. 
-    @metricsTimes.each do |value|
+    @morganMetricsTimes.each do |value|
 
       v = value["calendar"]
       if v != nil
-      @metricsCalendarValues << v 
+      @morganMetricsCalendarValues << v 
       else
       #@metricsBusinessValues << 0 include this if calculating MEAN instead of MEDIAN
         next  
@@ -50,10 +50,10 @@
     end
 
     #extracting the reply time during ONLY business hours. Adds zero to the arrays so that averages reflect an accurate time measurement. 
-    @metricsTimes.each do |value|
+    @morganMetricsTimes.each do |value|
       b = value["business"]
       if b != nil
-      @metricsBusinessValues << b 
+      @morganMetricsBusinessValues << b 
       else
      # @metricsBusinessValues << 0 include this if calculating MEAN instead of MEDIAN 
         next
@@ -62,15 +62,15 @@
 
     #assigning data from instance variables to easy-to-understand variables for doing maths. 
     
-    fullResoDuringCalendarHours = @metricsCalendarValues
-    fullResoDuringBusinessHours = @metricsBusinessValues
+    morganfullResoDuringCalendarHours = @morganMetricsCalendarValues
+    morganfullResoDuringBusinessHours = @morganMetricsBusinessValues
 
     #for calculating MEAN uncomment the below
     #$morganfrch = replyTimeDuringCalendarHours.instance_eval { reduce(:+) / size.to_f } 
     #$morganfrbh = replyTimeDuringBusinessHours.instance_eval { reduce(:+) / size.to_f }
 
-    $morganfrch = fullResoDuringCalendarHours
-    $morganfrbh = fullResoDuringBusinessHours
+    $morganfrch = morganfullResoDuringCalendarHours
+    $morganfrbh = morganfullResoDuringBusinessHours
 
   #this calculates the MEDIAN and returns it
   def median(array)
@@ -82,4 +82,3 @@
   $morganFullResoBusinessHours = median($morganfrbh)
   $morganFullResoCalendarHours = median($morganfrch)
 
-=end

@@ -1,4 +1,4 @@
-=begin
+
     morganTickets = Ticket.recents.where(:a_id => 360435687346) 
     
     #empty array to store individual tickets in 
@@ -22,6 +22,7 @@
     @morganMetricsCalendarValues = []
     @morganMetricsBusinessValues = []
     @morganMetricsTimes = []
+    @morganMetricID = []
     
     #iterates through each zen_id, adds the TicketMetric with matching tick_id to an array 
     @morganTicketId.each do |value|
@@ -83,7 +84,7 @@
 
     #$morganrtch = morganreplyTimeDuringCalendarHours
     #$morganrtbh = morganreplyTimeDuringBusinessHours
-=end
+
 =begin
   #this calculates the MEDIAN and returns it
   def median(array)
@@ -92,7 +93,7 @@
     return (sorted[(len - 1) / 2] + sorted[len / 2]) / 2.0
   end
 =end
-=begin
+
   $morganBusinessHours = $morganrtbh
   $morganCalendarHours = $morganrtch
 
@@ -108,4 +109,3 @@
       csv << hash
     end
   end
-=end
