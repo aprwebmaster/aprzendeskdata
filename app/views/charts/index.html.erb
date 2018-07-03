@@ -2,12 +2,12 @@
 <br>
 <div>
 	<h2>Average Reply Time during Business Hours </h2>
-<p> <%= bar_chart ({"Morgan" => $morganBusinessHours, "Elise" => $eliseBusinessHours, "Raul" => $raulBusinessHours, "Edgar" => $edgarBusinessHours})%></p>
+<p> <%= bar_chart ({"Morgan" => $morganBusinessHours, "Elise" => $eliseBusinessHours, "Raul" => $raulBusinessHours, "Edgar" => $edgarBusinessHours, "Kevin" => $kevinBusinessHours})%></p>
 </div>
 <br>
 <div>
 	<h2>Median Full Resolution Time during Business Hours </h2>
-<p> <%= bar_chart ({"Morgan" => $morganFullResoBusinessHours, "Elise" => $eliseFullResoBusinessHours, "Raul" => $raulFullResoBusinessHours, "Edgar" => $edgarFullResoBusinessHours})%></p>
+<p> <%= bar_chart ({"Morgan" => $morganFullResoBusinessHours, "Elise" => $eliseFullResoBusinessHours, "Raul" => $raulFullResoBusinessHours, "Edgar" => $edgarFullResoBusinessHours, "Kevin" => $kevinFullResoBusinessHours})%></p>
 </div>
 <br>
 <div>
@@ -66,6 +66,22 @@
 <h5>Median Full Resolution Time by Minutes</h5>
 <p> During Business Hours: <b><%= p $raulFullResoBusinessHours %></b></p>
 <p> Calendar Hours: <b><%= p $raulFullResoCalendarHours %></b></p>
+</div>
+<hr>
+
+
+<div>
+<h3> Kevin Reply Time Data </h3>
+<h5>Average Reply Time by Minutes</h5>
+<p> During Business Hours: <b><%= p $kevinBusinessHours %></b> </p>
+<p> Calendar Hours: <b><%= p $kevinCalendarHours %></b> </p>
+</div>
+
+<div>
+<h3>Kevin Full Resolution Data </h3>
+<h5>Median Full Resolution Time by Minutes</h5>
+<p> During Business Hours: <b><%= p $kevinFullResoBusinessHours %></b></p>
+<p> Calendar Hours: <b><%= p $kevinFullResoCalendarHours %></b></p>
 </div>
 <hr>
 
