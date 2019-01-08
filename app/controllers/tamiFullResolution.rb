@@ -87,8 +87,8 @@
   ary.length.odd? ? sorted[mid] : 0.5 * (sorted[mid] + sorted[mid - 1])
   end
 
-  tamiFullResoBusinessHours = median(tamifrbh)
-  tamiFullResoCalendarHours = median(tamifrch)
+  $tamiFullResoBusinessHours = median(tamifrbh)
+  $tamiFullResoCalendarHours = median(tamifrch)
 
   #puts tamirtbh
   #puts tamirtch

@@ -49,6 +49,9 @@ class ChartsController < ApplicationController
     puts $kevinFullResoBusinessHours 
     puts $kevinFullResoCalendarHours 
 
+    puts $tamiBusinessHours 
+    puts $tamiCalendarHours 
+
     puts $tamiFullResoBusinessHours 
     puts $tamiFullResoCalendarHours 
 
