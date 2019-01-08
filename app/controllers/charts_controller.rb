@@ -6,6 +6,8 @@ class ChartsController < ApplicationController
 	load 'raulFullResolution.rb'
   load 'kevinReplyTime.rb'
   load 'kevinFullResolution.rb'
+  load 'tamiReplyTime.rb'
+  load 'tamiFullResolution.rb'
 
 
   def index
@@ -46,6 +48,9 @@ class ChartsController < ApplicationController
 
     puts $kevinFullResoBusinessHours 
     puts $kevinFullResoCalendarHours 
+
+    puts $tamiFullResoBusinessHours 
+    puts $tamiFullResoCalendarHours 
 
 
   end

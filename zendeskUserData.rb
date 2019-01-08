@@ -23,9 +23,9 @@ puts @response.message
 puts @response.body
 
 
-File.write('aprzendeskusers.json', @response.body)
+File.write('aprzendeskusers1.json', @response.body)
 
-file = File.read('aprzendeskusers.json')
+file = File.read('aprzendeskusers1.json')
 hash = JSON.parse(file)
 
 CSV.open('aprzendeskusers.csv', 'w') do |csv|

@@ -2,12 +2,12 @@
 <br>
 <div>
 	<h2>Average Reply Time during Business Hours </h2>
-<p> <%= bar_chart ({"Raul" => $raulBusinessHours, "Edgar" => $edgarBusinessHours, "Kevin" => $kevinBusinessHours})%></p>
+<p> <%= bar_chart ({"Raul" => $raulBusinessHours, "Edgar" => $edgarBusinessHours, "Kevin" => $kevinBusinessHours, "Tamiris" => $tamiBusinessHours})%></p>
 </div>
 <br>
 <div>
 	<h2>Median Full Resolution Time during Business Hours </h2>
-<p> <%= bar_chart ({"Raul" => $raulFullResoBusinessHours, "Edgar" => $edgarFullResoBusinessHours, "Kevin" => $kevinFullResoBusinessHours})%></p>
+<p> <%= bar_chart ({"Raul" => $raulFullResoBusinessHours, "Edgar" => $edgarFullResoBusinessHours, "Kevin" => $kevinFullResoBusinessHours, "Tamiris" => $tamiFullResoBusinessHours})%></p>
 </div>
 <br>
 <div>
@@ -58,5 +58,19 @@
 </div>
 <hr>
 
+<div>
+<h3> Tamiris Reply Time Data </h3>
+<h5>Average Reply Time by Minutes</h5>
+<p> During Business Hours: <b><%= p $tamiBusinessHours %></b> </p>
+<p> Calendar Hours: <b><%= p $tamiCalendarHours %></b> </p>
+</div>
+
+<div>
+<h3>Tamiris Full Resolution Data </h3>
+<h5>Median Full Resolution Time by Minutes</h5>
+<p> During Business Hours: <b><%= p $tamiFullResoBusinessHours %></b></p>
+<p> Calendar Hours: <b><%= p $tamiFullResoCalendarHours %></b></p>
+</div>
+<hr>
 
  
